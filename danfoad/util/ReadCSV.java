@@ -1,12 +1,13 @@
+package danfoad.util;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.StringBuilder;
-
-package co.uk.danfoad.util;
 
 /**
  * ReadCSV
@@ -126,8 +127,9 @@ public class ReadCSV {
         
     }
     
+    /* Usage 
     public static void main(String[] args) {
         CSVResult result = new ReadCSV().readCSV("test.csv");
         System.out.println(result);
-    }
+    }*/
 }
