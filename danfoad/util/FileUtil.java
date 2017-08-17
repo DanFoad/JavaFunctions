@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FileUtil {
-    public static String readTextFile(String filename) {
+    public static String read(String filename) {
         StringBuilder sb = new StringBuilder();
         BufferedReader br = null;
         
@@ -36,7 +36,7 @@ public class FileUtil {
         return sb.toString();
     }
     
-    public static String[] readLinesFromTextFile(String filename) {
+    public static String[] readLines(String filename) {
         ArrayList<String> ret = new ArrayList<String>();
         BufferedReader br = null;
         
@@ -63,7 +63,7 @@ public class FileUtil {
         return (stringArray);
     }
     
-    public static String readLineFromTextFile(String filename, int lineNumber) {
+    public static String readLine(String filename, int lineNumber) {
         BufferedReader br = null;
         int lineCount = 0;
         
@@ -91,7 +91,7 @@ public class FileUtil {
         return null;
     }
     
-    public static int countLinesInTextFile(String filename) {
+    public static int countLines(String filename) {
         BufferedReader br = null;
         int lineCount = 0;
         
