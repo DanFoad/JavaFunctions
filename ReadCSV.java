@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.StringBuilder;
 
+package co.uk.danfoad.util;
+
 /**
  * ReadCSV
  * ---------
