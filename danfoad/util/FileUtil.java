@@ -3,7 +3,9 @@ package danfoad.util;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.lang.StringBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,5 +116,42 @@ public class FileUtil {
         }
         
         return lineCount;
+    }
+    
+    public static void writeFile(String filename, String contents, boolean append) {
+        BufferedWriter bw = null;
+        
+        try {
+            bw = new BufferedWriter(new FileWriter(filename, append)); // Open file
+            bw.write(contents);
+        } catch (FileNotFoundException fnfe) {
+            System.err.println("File not found, exitting.");
+            System.exit(0);
+        } catch (IOException ioe) {
+            System.err.println("IOException, exitting. " + ioe.toString());
+            System.exit(1);
+        } finally {
+            if (bw != null) try { bw.close(); } catch (IOException ioe) { ioe.printStackTrace(); }
+        }
+    }
+    
+    public static void writeFile(String filename, String[] contents, boolean append) {
+        StringBuilder sb = new StringBuilder();
+        
+        for (int i = 0; i < contents.length; i++) {
+            sb.append(contents[i]);
+            if (i != contents.length - 1)
+                sb.append(System.getProperty("line.separator"));
+        }
+        
+        writeFile(filename, sb.toString(), append);
+    }
+    
+    public static void writeFile(String filename, String contents) {
+        writeFile(filename, contents, false);
+    }
+    
+    public static void writeFile(String filename, String[] contents) {
+        writeFile(filename, contents, false);
     }
 }
