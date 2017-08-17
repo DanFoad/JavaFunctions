@@ -15,5 +15,6 @@ public class Test {
         System.out.println("\r\nLines: " + FileUtil.countLines("test.csv"));
         FileUtil.writeFile("testwrite.txt", contents);
         FileUtil.writeFile("testwrite2.txt", lines, false);
+        System.out.println("Is testwrite empty? " + FileUtil.isEmpty("testwrite.txt"));
     }
 }
