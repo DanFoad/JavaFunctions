@@ -1,31 +1,40 @@
 import danfoad.util.FileUtil;
 import danfoad.util.IOUtil;
-import danfoad.util.ReadCSV;
-import danfoad.util.ReadCSV.CSVResult;
+import danfoad.util.FileUtil.CSVResult;
+
+import static danfoad.util.IOUtil.print;
+import static danfoad.util.IOUtil.println;
 
 public class Test {
     public static void main(String[] args) {
         
-        CSVResult result = ReadCSV.new CSVResult();
-        result = ReadCSV.readCSV("test.csv", result);
-        System.out.println(result);
+        println("Reading with FileUtil.readCSV: ");
+        CSVResult result = FileUtil.readCSV("test.csv");
+        println(result + "\r\n");
         
+        println("Reading with FileUtil.read: ");
         String contents = FileUtil.read("test.csv");
-        System.out.println(contents);
-        System.out.println("\r\n");
+        println(contents + "\r\n");
+
         String[] lines = FileUtil.readLines("test.csv");
         for (int i = 0; i < lines.length; i++) {
-            System.out.println("Line " + i + ": " + lines[i]);
+            println("Line " + i + ": " + lines[i]);
         }
-        System.out.println("\r\n");
-        System.out.println("Line 4: " + FileUtil.readLine("test.csv", 4));
-        System.out.println("Line 10: " + FileUtil.readLine("test.csv", 10));
-        System.out.println("\r\nLines: " + FileUtil.countLines("test.csv"));
+        println("\r\n");
+        
+        println("Line 4: " + FileUtil.readLine("test.csv", 4));
+        println("Line 10: " + FileUtil.readLine("test.csv", 10));
+        
+        println("\r\nLines: " + FileUtil.countLines("test.csv"));
+        
         FileUtil.writeFile("testwrite.txt", contents);
         FileUtil.writeFile("testwrite2.txt", lines, false);
-        System.out.println("Is testwrite empty? " + FileUtil.isEmpty("testwrite.txt"));
+        
+        println("Is testwrite empty? " + FileUtil.isEmpty("testwrite.txt"));
+        
         String test = IOUtil.getInput("enter a string: ", "incorrect string", " > ");
         int test2 = IOUtil.getInt("enter an int: ");
-        IOUtil.println(IOUtil.shellExecute("ls"));
+        
+        println(IOUtil.shellExecute("ls"));
     }
 }
