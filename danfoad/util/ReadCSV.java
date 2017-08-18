@@ -17,15 +17,14 @@ import java.lang.StringBuilder;
  */
 public class ReadCSV {
     
-    private BufferedReader br; // Used to read from file
+    private static BufferedReader br; // Used to read from file
     
     /** ReadCSV::readCSV
      * Read data from arbitrary csv and return result as CSVResult object
      * @param String filename   Filename of CSV file to read in
      * @return CSVResult        CSVResult object representing contents of CSV
      */
-    public CSVResult readCSV(String filename) {
-        CSVResult result = new CSVResult(); // Make new CSVResult
+    public static CSVResult readCSV(String filename, CSVResult result) {
         
         try {
             br = new BufferedReader(new FileReader(filename)); // Open file
@@ -57,7 +56,7 @@ public class ReadCSV {
      * @author Dan Foad
      * @version 1.0.0
      */
-    class CSVResult {
+    public class CSVResult {
         
         // ArrayList of CSV headers
         private ArrayList<String> headers;
@@ -126,10 +125,4 @@ public class ReadCSV {
         }
         
     }
-    
-    /* Usage 
-    public static void main(String[] args) {
-        CSVResult result = new ReadCSV().readCSV("test.csv");
-        System.out.println(result);
-    }*/
 }
