@@ -1,5 +1,0 @@
-NAME,CAPITAL,CURRENCY
-India,New Delhi,INR
-USA,Washington,USD
-England,London,GBP
-Japan,Tokyo,JPY
