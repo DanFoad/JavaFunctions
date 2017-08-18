@@ -13,7 +13,7 @@ import java.lang.Runtime;
  * IOUtil
  * ---------
  * @author Dan Foad
- * @version 1.0.0
+ * @version 1.2.0
  */
 public class IOUtil {
     
