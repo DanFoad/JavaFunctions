@@ -1,3 +1,5 @@
+package danfoad.util.ui;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
@@ -17,6 +19,8 @@ import java.awt.Image;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import danfoad.util.ui.JFrameMaximised;
 
 /**
  * JTitlebarButton

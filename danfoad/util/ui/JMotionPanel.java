@@ -1,3 +1,5 @@
+package danfoad.util.ui;
+
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 
