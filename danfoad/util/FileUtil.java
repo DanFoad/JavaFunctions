@@ -12,6 +12,9 @@ import java.lang.StringBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Comparator;
+import java.util.Collections;
 
 /**
  * FileUtil
@@ -286,7 +289,10 @@ public class FileUtil {
                 String[] fields = raw.split(","); // Split CSV fields
                 HashMap<String, String> datum = new HashMap<String, String>(); // New datum
                 for (int i = 0; i < result.getHeaders().size(); i++) { // Add each field under each header
-                    datum.put(result.getHeaders().get(i), fields[i]);
+                    if (fields.length > i)
+                        datum.put(result.getHeaders().get(i), fields[i]);
+                    else
+                        datum.put(result.getHeaders().get(i), "");
                 }
                 result.addData(datum); // Add datum to main data arraylist 
             }
@@ -351,6 +357,14 @@ public class FileUtil {
             data.add(datum);
         }
         
+        /** CSVResult::sort
+         * Sort data by given key
+         * @param String key    Key to sort the data by
+         */
+        public void sort(String key) {
+            Collections.sort(getData(), new MapComparator(key));
+        }
+        
         /** CSVResult::toString
          * Convert CSVResult to human-readable format
          * @return String   String representation of CSV file
@@ -378,5 +392,36 @@ public class FileUtil {
             return sb.toString();
         }
         
+    }
+    
+    /**
+     * MapComparator
+     * ---------------
+     * @author Dan Foad
+     * @version 1.0.0
+     */
+    public class MapComparator implements Comparator<Map<String, String>> {
+        
+        private final String key; // Key value to sort data by
+
+        /** MapComparator
+         * Constructor takes in key value
+         * @param String key    Key value to sort data by
+         */
+        public MapComparator(String key) {
+            this.key = key;
+        }
+
+        /** MapComparator
+         * Compare two Maps of type String -> String
+         * @param Map<String, String> first     First map to compare with
+         * @param Map<String, String> second    Second map to compare with
+         * @return int  Whether first map is before, after or equal with second
+         */
+        public int compare(Map<String, String> first, Map<String, String> second) {
+            String firstValue = first.get(key);
+            String secondValue = second.get(key);
+            return firstValue.compareTo(secondValue);
+        }
     }
 }
